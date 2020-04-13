@@ -1,6 +1,6 @@
 // import libraries to create components
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import { useAlbums } from '../Hooks/AlbumData';
 import AlbumDetail from './AlbumDetail';
 
@@ -8,12 +8,11 @@ import AlbumDetail from './AlbumDetail';
 
 const AlbumList = () => {
   const {textStyle, ViewStyle} = styles;
-  // console.log(useAlbums(), '<<<<<<<<<<')
   const trackList = useAlbums()
   return (
-    <View>
+    <ScrollView>
         {trackList.map((track, index) => <AlbumDetail key={index} track={track}/>)}
-    </View>
+    </ScrollView>
   );
 };
 
