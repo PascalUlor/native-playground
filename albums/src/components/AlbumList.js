@@ -1,21 +1,25 @@
 // import libraries to create components
 import React from 'react';
 import {Text, View} from 'react-native';
+import { useAlbums } from '../Hooks/AlbumData';
+import AlbumDetail from './AlbumDetail';
 
 //create components
 
-const Header = ({ headerText }) => {
+const AlbumList = () => {
   const {textStyle, ViewStyle} = styles;
+  // console.log(useAlbums(), '<<<<<<<<<<')
+  const trackList = useAlbums()
   return (
-    <View style={ViewStyle}>
-      <Text style={textStyle}>{headerText}</Text>
+    <View>
+        {trackList.map((track, index) => <AlbumDetail key={index} track={track}/>)}
     </View>
   );
 };
 
 const styles = {
     ViewStyle: {
-        backgroundColor: '#ab12ff',
+        backgroundColor: '#F8F8F8',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -33,4 +37,4 @@ const styles = {
 };
 
 // Make components available to app
-export default Header;
+export default AlbumList;
